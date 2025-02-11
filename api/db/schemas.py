@@ -1,3 +1,4 @@
+from fastapi import FastAPI, HTTPException
 from enum import Enum
 from typing import OrderedDict
 
@@ -61,7 +62,11 @@ class InMemoryDB:
         Returns:
             Book: Book.
         """
-        return self.books.get(book_id)
+        book = self.books.get(book_id)
+        if book is None:
+            raise HTTPException(status_code=404, detail="Book not found")
+        return book
+            
 
     def update_book(self, book_id: int, data: Book) -> Book:
         """Updates a specific book in database.
