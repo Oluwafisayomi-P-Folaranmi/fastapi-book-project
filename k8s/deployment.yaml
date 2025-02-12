@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-bookstore
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fastapi-bookstore
+  template:
+    metadata:
+      labels:
+        app: fastapi-bookstore
+    spec:
+      containers:
+      - name: fastapi-bookstore
+        image: YOUR_DOCKER_HUB_USERNAME/fastapi-bookstore:latest
+        ports:
+        - containerPort: 8000
