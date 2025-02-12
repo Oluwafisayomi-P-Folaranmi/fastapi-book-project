@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from enum import Enum
 from typing import OrderedDict
 
@@ -63,8 +63,6 @@ class InMemoryDB:
             Book: Book.
         """
         book = self.books.get(book_id)
-        if book is None:
-            raise HTTPException(status_code=404, detail="Book not found")
         return book
             
 

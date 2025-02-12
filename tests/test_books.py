@@ -1,5 +1,9 @@
 from tests import client
 
+##
+## There are `5` in total.
+##
+
 
 def test_get_all_books():
     response = client.get("/books/")
